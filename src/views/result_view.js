@@ -8,7 +8,7 @@ const ResultView = function (htmlElement) {
 
 ResultView.prototype.bindEvents = function(){
     PubSub.subscribe('Engine:crimes-in-the-area', (event)=>{
-        console.log(event.detail)
+        console.log(event.detail);
     })
 }
 
