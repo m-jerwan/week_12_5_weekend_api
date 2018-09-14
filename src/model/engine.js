@@ -11,7 +11,7 @@ Engine.bindEvents = function () {
 
 Engine.prototype.getAndPublishNeighbourhoods = function () {
     // https://data.police.uk/api/forces    //to get all forces
-    const forceId = 'merseyside';                   //GET AN DROPDOWN for this
+    const forceId = 'metropolitan';                   //GET AN DROPDOWN for this
     const requestForAllNeighb = new RequestHelper(`https://data.police.uk/api/${forceId}/neighbourhoods`);
     requestForAllNeighb.get()
         .then((data) => {
