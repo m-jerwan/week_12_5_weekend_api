@@ -11,7 +11,7 @@ Engine.bindEvents = function () {
 
 Engine.prototype.getAndPublishNeighbourhoods = function () {
     // https://data.police.uk/api/forces    //to get all forces
-    const forceId = 'leicestershire';                   //GET AN DROPDOWN for this
+    const forceId = 'merseyside';                   //GET AN DROPDOWN for this
     const requestForAllNeighb = new RequestHelper(`https://data.police.uk/api/${forceId}/neighbourhoods`);
     requestForAllNeighb.get()
         .then((data) => {
@@ -27,10 +27,7 @@ Engine.prototype.getAndPublishNeighbourhoods = function () {
         const requestForNeighPoly = new RequestHelper(`https://data.police.uk/api/${event.detail.forceId}/${event.detail.id}/boundary`);
         requestForNeighPoly.get()
             .then((data) => {
-                console.log(`${data.length} polyParam points`);
-                
-                const reducePolygonData = this.reducePolygonNumber(100,data);
-                
+                const reducePolygonData = this.reducePolygonNumber(100,data);                
                 const includePolygonsInrequest = this.includePolygonsInrequest(reducePolygonData);
                 const requestOfCrimesBasedOnPoly = new RequestHelper(`https://data.police.uk/api/crimes-street/all-crime?poly=${includePolygonsInrequest}`);
                 requestOfCrimesBasedOnPoly.get()
@@ -45,7 +42,7 @@ Engine.prototype.getAndPublishNeighbourhoods = function () {
 Engine.prototype.reducePolygonNumber = function(number, polygonData){
     if (polygonData.length > number){
         polygonData.forEach((polygon, counter) => {
-            if (counter %3 ===0){
+            if (counter %2 ===0){
                 polygonData.splice(counter,1);
             }  
         });

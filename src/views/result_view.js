@@ -15,7 +15,14 @@ ResultView.prototype.bindEvents = function(){
 
 ResultView.prototype.renderCrimes = function (crimeData) {
     crimeData.forEach(crime => {
-        console.log(crime.category);
+        const tempHtmlElement  = new CreateHtmlElem();
+        let crimeStatus = '';
+        if (crime.outcome_status){
+             crimeStatus = crime.outcome_status.category;
+        }else{
+            crimeStatus = 'unknown';
+        }
+        tempHtmlElement.createGenericElem('p', this.htmlElement, `${crime.category}: ${crimeStatus}`, 'crime-category');
     });
 }
 
