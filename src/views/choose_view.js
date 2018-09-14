@@ -1,8 +1,8 @@
 const PubSub = require('../helpers/pub_sub');
 const CreateHtmlElem = require('../helpers/createHtmlElem');
 
-const ChooseView = function(container){
-    this.container = container;
+const ChooseView = function(htmlElement){
+    this.htmlElement = htmlElement;
 };
 
 
@@ -12,9 +12,9 @@ ChooseView.prototype.bindEvents = function(){
         event.detail.data.forEach(element => {
             const createHtmlElem = new CreateHtmlElem();
             const id = `${element.id}`
-            createHtmlElem.createOption(this.container, element.name, id);
+            createHtmlElem.createOption(this.htmlElement, element.name, id);
         });   
-        this.container.addEventListener('change', (event)=>{
+        this.htmlElement.addEventListener('change', (event)=>{
             const chosenIdAndForce = {
                 "id":event.target.value,
                 "forceId": forceId

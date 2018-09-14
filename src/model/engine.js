@@ -36,7 +36,6 @@ Engine.prototype.getAndPublishNeighbourhoods = function () {
                 console.log(newLengthInNeed.length);
                 requestForCrimesOfAreaOfPoly.get()
                 .then((data)=>{
-                    console.log(data)
                     PubSub.publish('Engine:crimes-in-the-area', data);
                 })
 
