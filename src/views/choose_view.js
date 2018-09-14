@@ -9,13 +9,14 @@ const ChooseView = function(container){
 ChooseView.prototype.bindEvents = function(){
     PubSub.subscribe('Engine:array-of-neighbourhoods', (event)=>{
         console.log(event.detail); // expandendable
-        const force = event.detail.force;
+        const forceId = event.detail.forceId;
         event.detail.data.forEach(element => {
             const createHtmlElem = new CreateHtmlElem();
-            const idAndForce = `${force}_${element.id}`
-            createHtmlElem.createOption(this.container, element.name, idAndForce);
+            const idAndForceId = `${forceId}_${element.id}`
+            createHtmlElem.createOption(this.container, element.name, idAndForceId);
         });   
         this.container.addEventListener('change', (event)=>{
+
         })
     })
 

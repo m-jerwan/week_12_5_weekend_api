@@ -11,16 +11,16 @@ Engine.bindEvents = function(){
 
 Engine.prototype.getAndPublishNeighbourhoods = function(){
     // https://data.police.uk/api/forces    //to get all forces
-    const force = 'leicestershire';
-    const url = `https://data.police.uk/api/${force}/neighbourhoods`;
+    const forceId = 'leicestershire';
+    const url = `https://data.police.uk/api/${forceId}/neighbourhoods`;
     const request = new RequestHelper(url);
     request.get()
         .then((data)=>{
-            const dataincludingForce = {
-                "force": force,
+            const dataincludingForceId = {
+                "forceId": forceId,
                 "data": data
             }
-            PubSub.publish('Engine:array-of-neighbourhoods', dataincludingForce);
+            PubSub.publish('Engine:array-of-neighbourhoods', dataincludingForceId);
         })
 
 
