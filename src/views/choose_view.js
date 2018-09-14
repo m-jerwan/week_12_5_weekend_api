@@ -8,15 +8,18 @@ const ChooseView = function(container){
 
 ChooseView.prototype.bindEvents = function(){
     PubSub.subscribe('Engine:array-of-neighbourhoods', (event)=>{
-        console.log(event.detail); // expandendable
         const forceId = event.detail.forceId;
         event.detail.data.forEach(element => {
             const createHtmlElem = new CreateHtmlElem();
-            const idAndForceId = `${forceId}_${element.id}`
-            createHtmlElem.createOption(this.container, element.name, idAndForceId);
+            const id = `${element.id}`
+            createHtmlElem.createOption(this.container, element.name, id);
         });   
         this.container.addEventListener('change', (event)=>{
-
+            const chosenIdAndForce = {
+                "id":event.target.value,
+                "forceId": forceId
+            }
+            PubSub.publish('ChooseView:chosen-id-and-force', chosenIdAndForce)
         })
     })
 
