@@ -29,7 +29,9 @@ Engine.prototype.getAndPublishNeighbourhoods = function () {
             .then((data) => {
                 console.log(`${data.length} polyParam points`);
                 
-                const includePolygonsInrequest = this.includePolygonsInrequest(data);
+                const reducePolygonData = this.reducePolygonNumber(100,data);
+                
+                const includePolygonsInrequest = this.includePolygonsInrequest(reducePolygonData);
                 const requestOfCrimesBasedOnPoly = new RequestHelper(`https://data.police.uk/api/crimes-street/all-crime?poly=${includePolygonsInrequest}`);
                 requestOfCrimesBasedOnPoly.get()
                 .then((data)=>{
@@ -40,9 +42,17 @@ Engine.prototype.getAndPublishNeighbourhoods = function () {
 };
 
 
-// Engine.prototype.reducePolygonNumberBy = function(number, polygonData){
-    
-// }
+Engine.prototype.reducePolygonNumber = function(number, polygonData){
+    if (polygonData.length > number){
+        polygonData.forEach((polygon, counter) => {
+            if (counter %3 ===0){
+                polygonData.splice(counter,1);
+            }  
+        });
+        this.reducePolygonNumber(number, polygonData);
+    }
+    return polygonData;
+}
 
 Engine.prototype.includePolygonsInrequest = function (polygonData) {
     let polyParamString = "";
