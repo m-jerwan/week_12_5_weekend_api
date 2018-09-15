@@ -14,16 +14,22 @@ ResultView.prototype.bindEvents = function(){
 }
 
 ResultView.prototype.renderCrimes = function (crimeData) {
+    this.htmlElement.textContent = '';
+    const crimeDataUniqueCounted = this.constructUniqueDataCounted(crimeData);
+    
+    for (key in crimeDataUniqueCounted){
+        const createHtmlElem = new CreateHtmlElem();
+        createHtmlElem.createGenericElem('h2', this.htmlElement, `${key}:${crimeDataUniqueCounted[key]}`, 'crime-container')
+    }
+}
+
+ResultView.prototype.constructUniqueDataCounted = function (crimeData) {
+    let uniqueDataWithCounters = {}
     crimeData.forEach(crime => {
-        const tempHtmlElement  = new CreateHtmlElem();
-        let crimeStatus = '';
-        if (crime.outcome_status){
-             crimeStatus = crime.outcome_status.category;
-        }else{
-            crimeStatus = 'unknown';
-        }
-        tempHtmlElement.createGenericElem('p', this.htmlElement, `${crime.category}: ${crimeStatus}`, 'crime-category');
+        let category = crime.category;
+        uniqueDataWithCounters[category] = (uniqueDataWithCounters[category] || 0 ) +1;
     });
+    return uniqueDataWithCounters;
 }
 
 
