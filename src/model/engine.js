@@ -3,14 +3,13 @@ const RequestHelper = require('../helpers/request_helper');
 
 const Engine = function () { };
 
-Engine.bindEvents = function () {
-    
+Engine.prototype.bindEvents = function () {
+    PubSub.subscribe('ChooseView:Force-choosen', (event)=>{
+        this.getAndPublishNeighbourhoods(event.detail);
+    })
 };
 
-
-Engine.prototype.getAndPublishNeighbourhoods = function () {
-    // https://data.police.uk/api/forces    //to get all forces
-    const forceId = 'leicestershire';                   //GET AN DROPDOWN for this
+Engine.prototype.getAndPublishNeighbourhoods = function (forceId) {
     const requestForAllNeighb = new RequestHelper(`https://data.police.uk/api/${forceId}/neighbourhoods`);
     requestForAllNeighb.get()
         .then((data) => {
@@ -52,7 +51,6 @@ Engine.prototype.getForcesListIds = function(){
     return forcesList.getForcesIds();
 }
 
-
 Engine.prototype.constructUniqueDataCounted = function (crimeData) {
     let uniqueDataWithCounters = {}
     crimeData.forEach(crime => {
@@ -61,7 +59,6 @@ Engine.prototype.constructUniqueDataCounted = function (crimeData) {
     });
     return uniqueDataWithCounters;
 }
-
 
 Engine.prototype.reducePolygonNumber = function(number, polygonData){
     if (polygonData.length > number){

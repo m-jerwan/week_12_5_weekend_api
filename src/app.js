@@ -8,19 +8,20 @@ const ResultNeigbDescript = require('./views/result-neigb-descrip');
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const engine = new Engine();
-
-    engine.getAndPublishNeighbourhoods();
-
-
     const selectContainer = document.querySelector('#select-dropdown');
     const chooseView = new ChooseView(selectContainer);
     chooseView.bindEvents();
 
+    const engine = new Engine();
+    engine.bindEvents();
+    // engine.getAndPublishNeighbourhoods();
+
+
+
+
     const chartElement = document.querySelector('#result-chart');
     const resultChart = new ResultChart(chartElement);
     resultChart.bindEvents();
-
 
     const descriptionElement = document.querySelector('#neighbourhoodDescription');
     const resultNeigbDescript = new ResultNeigbDescript(descriptionElement);
