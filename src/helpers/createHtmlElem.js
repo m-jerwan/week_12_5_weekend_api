@@ -13,6 +13,7 @@ CreateHtmlElem.prototype.createGenericElem = function (tag, container, content, 
     if (classType) { tempElement.classList.add(classType);};
     if (id) { tempElement.id = (id);}
     container.appendChild(tempElement);
+    return tempElement;
 }
 
 

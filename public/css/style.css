@@ -4,3 +4,11 @@
     flex-wrap: wrap;
     border: 1px solid red;
 }
+
+.t-body-crime{
+    text-align: right;
+}
+
+.t-body-occurence {
+    text-align: center;    
+}

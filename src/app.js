@@ -1,6 +1,6 @@
 const Engine = require('./model/engine');
 const ChooseView = require('./views/choose_view');
-const ResultView = require('./views/result_view');
+const ResultViewTable = require('./views/result_view');
 
 
 
@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     chooseView.bindEvents();
 
         
-    const showContainer = document.querySelector('#result_view');
-    const resultView = new ResultView(showContainer);
-    resultView.bindEvents();
+    const result_table_head = document.querySelector('#result-table-head');
+    const result_table_body = document.querySelector('#result-table-body');
+    const resultViewTable = new ResultViewTable(result_table_head, result_table_body);
+    resultViewTable.bindEvents();
 })

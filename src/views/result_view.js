@@ -3,27 +3,29 @@ const CreateHtmlElem = require('../helpers/createHtmlElem');
 
 
 
-const ResultView = function (htmlElement) {
-    this.htmlElement = htmlElement;
+const ResultViewTable = function (head, body) {
+    this.head = head;
+    this.body = body;
 };
 
-ResultView.prototype.bindEvents = function(){
+ResultViewTable.prototype.bindEvents = function(){
     PubSub.subscribe('Engine:crimes-in-the-area', (event)=>{
         this.renderCrimes(event.detail);
     })
 }
 
-ResultView.prototype.renderCrimes = function (crimeData) {
-    this.htmlElement.textContent = '';
+ResultViewTable.prototype.renderCrimes = function (crimeData) {
+    this.body.textContent = '';
     const crimeDataUniqueCounted = this.constructUniqueDataCounted(crimeData);
-    
     for (key in crimeDataUniqueCounted){
         const createHtmlElem = new CreateHtmlElem();
-        createHtmlElem.createGenericElem('h2', this.htmlElement, `${key}:${crimeDataUniqueCounted[key]}`, 'crime-container')
+        const tableRow = createHtmlElem.createGenericElem('tr', this.body);
+        createHtmlElem.createGenericElem('td', tableRow, `${key}:  `, 't-body-crime');
+        createHtmlElem.createGenericElem('td', tableRow, crimeDataUniqueCounted[key] , 't-body-occurence');
     }
 }
 
-ResultView.prototype.constructUniqueDataCounted = function (crimeData) {
+ResultViewTable.prototype.constructUniqueDataCounted = function (crimeData) {
     let uniqueDataWithCounters = {}
     crimeData.forEach(crime => {
         let category = crime.category;
@@ -34,4 +36,4 @@ ResultView.prototype.constructUniqueDataCounted = function (crimeData) {
 
 
 
-module.exports = ResultView;
+module.exports = ResultViewTable;
