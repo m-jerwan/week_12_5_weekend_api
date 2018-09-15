@@ -1,6 +1,6 @@
 const Engine = require('./model/engine');
 const ChooseView = require('./views/choose_view');
-const ResultViewTable = require('./views/result_view');
+const ResultViewTable = require('./views/result_view_table');
 
 
 

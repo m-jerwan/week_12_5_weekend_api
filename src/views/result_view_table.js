@@ -21,7 +21,7 @@ ResultViewTable.prototype.renderCrimes = function (crimeData) {
         const createHtmlElem = new CreateHtmlElem();
         const tableRow = createHtmlElem.createGenericElem('tr', this.body);
         createHtmlElem.createGenericElem('td', tableRow, `${key}:  `, 't-body-crime');
-        createHtmlElem.createGenericElem('td', tableRow, crimeDataUniqueCounted[key] , 't-body-occurence');
+        createHtmlElem.createGenericElem('td', tableRow, crimeDataUniqueCounted[key], 't-body-occurence');
     }
 }
 
