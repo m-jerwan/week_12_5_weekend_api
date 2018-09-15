@@ -11,10 +11,10 @@ ChooseView.prototype.bindEvents = function(){
     this.addEventLisenerToAll(allGridLands);
 
     PubSub.subscribe('Engine:array-of-neighbourhoods', (event)=>{
-
-        this.resetOptions()
-
         const forceId = event.detail.forceId;
+        this.htmlElement.className = ('vissible');
+        console.log(this.htmlElement)
+        this.resetOptions()
         event.detail.data.forEach(element => {
             const createHtmlElem = new CreateHtmlElem();
             const id = `${element.id}`

@@ -45,9 +45,10 @@ h1{
   background-color: rgba(240, 240, 240, 0.8);
 }
 
-.select-dropdown {
-      text-align: center;
-      margin: auto;
+/* #select-dropdown {} */
+
+.hidden{
+      display: none;
 }
 
 .t-body-crime{
