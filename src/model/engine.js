@@ -33,10 +33,22 @@ Engine.prototype.getAndPublishNeighbourhoods = function () {
                 requestOfCrimesBasedOnPoly.get()
                 .then((data)=>{
                     PubSub.publish('Engine:crimes-in-the-area', data);
+                    const crimeDataUniqueCounted = this.constructUniqueDataCounted(data);
+                    PubSub.publish('Engine:crimes-in-the-area-unique', crimeDataUniqueCounted);
                 })
             })
     })
 };
+
+
+Engine.prototype.constructUniqueDataCounted = function (crimeData) {
+    let uniqueDataWithCounters = {}
+    crimeData.forEach(crime => {
+        let category = crime.category;
+        uniqueDataWithCounters[category] = (uniqueDataWithCounters[category] || 0) + 1;
+    });
+    return uniqueDataWithCounters;
+}
 
 
 Engine.prototype.reducePolygonNumber = function(number, polygonData){
