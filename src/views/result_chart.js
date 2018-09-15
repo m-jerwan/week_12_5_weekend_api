@@ -17,6 +17,12 @@ ResultChart.prototype.bindEvents = function(){
 ResultChart.prototype.renderChart = function(uniqueCrimeData){
     const arrayOfCrimes = this.createArrayOfCrimes(uniqueCrimeData);
     const arrayOfOccurences = this.createArrayOfOccurences(uniqueCrimeData);
+
+    // Highcharts.setOptions({
+    //     colors: ['#058DC7']
+    // });
+
+
     $(function () {
         $('#result-chart').highcharts({
             chart: {
