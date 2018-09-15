@@ -34,7 +34,7 @@ ResultChart.prototype.renderChart = function(uniqueCrimeData){
                 }
             },
             series: [{
-                name: 'Last Month',
+                name: 'Number of occurences of crime',
                 data: arrayOfOccurences
             }],
         });
@@ -44,7 +44,7 @@ ResultChart.prototype.renderChart = function(uniqueCrimeData){
 ResultChart.prototype.createArrayOfCrimes = function (uniqueCrimeData) {
     arrayOfCrimes = [];
     for (crime in uniqueCrimeData){
-        arrayOfCrimes.unshift(crime)
+        arrayOfCrimes.push(crime)
     }
     return arrayOfCrimes;
 }
@@ -52,7 +52,7 @@ ResultChart.prototype.createArrayOfCrimes = function (uniqueCrimeData) {
 ResultChart.prototype.createArrayOfOccurences = function (uniqueCrimeData) {
     arrayOfOccurences = [];
     for (crime in uniqueCrimeData) {
-        arrayOfOccurences.unshift(uniqueCrimeData[crime])
+        arrayOfOccurences.push(uniqueCrimeData[crime])
     }
     return arrayOfOccurences;
 }

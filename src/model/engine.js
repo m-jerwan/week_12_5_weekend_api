@@ -11,7 +11,7 @@ Engine.bindEvents = function () {
 
 Engine.prototype.getAndPublishNeighbourhoods = function () {
     // https://data.police.uk/api/forces    //to get all forces
-    const forceId = 'metropolitan';                   //GET AN DROPDOWN for this
+    const forceId = 'leicestershire';                   //GET AN DROPDOWN for this
     const requestForAllNeighb = new RequestHelper(`https://data.police.uk/api/${forceId}/neighbourhoods`);
     requestForAllNeighb.get()
         .then((data) => {
@@ -35,6 +35,13 @@ Engine.prototype.getAndPublishNeighbourhoods = function () {
                     PubSub.publish('Engine:crimes-in-the-area', data);
                     const crimeDataUniqueCounted = this.constructUniqueDataCounted(data);
                     PubSub.publish('Engine:crimes-in-the-area-unique', crimeDataUniqueCounted);
+                })
+                .then((forceId) =>{
+                    const requestForForceDescription = new RequestHelper(`https://data.police.uk/api/${event.detail.forceId}/${event.detail.id}`);
+                    requestForForceDescription.get()
+                    .then((data)=>{
+                        PubSub.publish('Engine:neigbourhood-data', data);
+                    })
                 })
             })
     })

@@ -3,6 +3,7 @@ const ChooseView = require('./views/choose_view');
 const ResultViewTable = require('./views/result_view_table');
 // const ResultMap = require('./views/result_map');
 const ResultChart = require('./views/result_chart');
+const ResultNeigbDescript = require('./views/result-neigb-descrip');
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,12 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
     chooseView.bindEvents();
 
         
-    const result_table_head = document.querySelector('#result-table-head');
-    const result_table_body = document.querySelector('#result-table-body');
-    const resultViewTable = new ResultViewTable(result_table_head, result_table_body);
-    resultViewTable.bindEvents();
+    // const result_table_head = document.querySelector('#result-table-head');
+    // const result_table_body = document.querySelector('#result-table-body');
+    // const resultViewTable = new ResultViewTable(result_table_head, result_table_body);
+    // resultViewTable.bindEvents();
 
     const chartElement = document.querySelector('#result-chart');
     const resultChart = new ResultChart(chartElement);
     resultChart.bindEvents();
+
+
+    const descriptionElement = document.querySelector('#neighbourhoodDescription');
+    const resultNeigbDescript = new ResultNeigbDescript(descriptionElement);
+    resultNeigbDescript.bindEvents();
+
+    neighbourhoodDescription
 })
