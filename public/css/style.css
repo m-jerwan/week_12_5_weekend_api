@@ -1,8 +1,48 @@
-#result_view {
+#all-wrapper {
     display: flex;
-    flex-direction: row;
+}
+
+#choose-view{
+    flex:1;
+    min-width: 49%;
+    height: 90vh;
+}
+
+#result-view {
+    min-width: 49%;
+    flex:1;
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    border: 1px solid red;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem;
+  /* background-color: #2196F3; */
+  padding: 10rem 1rem 1rem 2rem;
+}
+.grid-item {
+    background-color: rgba(255, 255, 255, 0);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  padding: 2px;
+  text-align: center;
+  height: 2rem;
+  margin: 0.05rem;
+  font-size: 0.8rem;
+}
+
+.grid-item:hover{
+  background-color: rgba(220, 220, 220, 0.0);
+}
+
+.land{
+  background-color: rgba(240, 240, 240, 0.8);
+}
+
+.select-dropdown {
+      text-align: center;
+      margin: auto;
 }
 
 .t-body-crime{

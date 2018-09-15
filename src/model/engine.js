@@ -4,8 +4,7 @@ const RequestHelper = require('../helpers/request_helper');
 const Engine = function () { };
 
 Engine.bindEvents = function () {
-    this.getAndPublishNeighbourhoods();
-
+    
 };
 
 
@@ -46,6 +45,12 @@ Engine.prototype.getAndPublishNeighbourhoods = function () {
             })
     })
 };
+
+
+Engine.prototype.getForcesListIds = function(){
+    const forcesList = new ForcesList();
+    return forcesList.getForcesIds();
+}
 
 
 Engine.prototype.constructUniqueDataCounted = function (crimeData) {

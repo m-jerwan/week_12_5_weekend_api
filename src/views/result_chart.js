@@ -29,9 +29,6 @@ ResultChart.prototype.renderChart = function(uniqueCrimeData){
                 categories: arrayOfCrimes
             },
             yAxis: {
-                title: {
-                    text: 'Fruit eaten'
-                }
             },
             series: [{
                 name: 'Number of occurences of crime',
