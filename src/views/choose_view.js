@@ -11,7 +11,9 @@ ChooseView.prototype.bindEvents = function(){
     this.addEventLisenerToAll(allGridLands);
 
     PubSub.subscribe('Engine:array-of-neighbourhoods', (event)=>{
-        this.htmlElement.textContent = '';
+
+        this.resetOptions()
+
         const forceId = event.detail.forceId;
         event.detail.data.forEach(element => {
             const createHtmlElem = new CreateHtmlElem();
@@ -27,6 +29,15 @@ ChooseView.prototype.bindEvents = function(){
         })
     })
 }
+
+ChooseView.prototype.resetOptions = function () {
+    this.htmlElement.textContent = '';
+    const emptyOption = document.createElement('option');
+    emptyOption.textContent = 'Please choose...';
+    this.htmlElement.appendChild(emptyOption);
+}
+
+
 
 ChooseView.prototype.addEventLisenerToAll = function(allGrids){
     allGrids.forEach(grid => {

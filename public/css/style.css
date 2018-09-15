@@ -8,6 +8,11 @@
     height: 90vh;
 }
 
+h1{
+    text-align: center;
+    margin-top: 5rem;
+}
+
 #result-view {
     min-width: 49%;
     flex:1;
@@ -20,7 +25,7 @@
   display: grid;
   grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem;
   /* background-color: #2196F3; */
-  padding: 10rem 1rem 1rem 2rem;
+  padding: 5rem 1rem 1rem 4rem;
 }
 .grid-item {
     background-color: rgba(255, 255, 255, 0);
