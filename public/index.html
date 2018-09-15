@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Weekend</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/bundle.js">
-    </script>
-  </head>
-  <body>
-    <div id="mighty-wrapper">
-      <section id="choose-view">
-        <select id="select-dropdown"></select>
-      </section>
-      <section id="result-view">
-        <table>
+
+<head>
+  <meta charset="utf-8">
+  <title>Weekend</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/bundle.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+
+<body>
+  <div id="mighty-wrapper">
+    <section id="choose-view">
+      <select id="select-dropdown"></select>
+    </section>
+    <section id="result-view">
+      <div id="map1">
+      </div>
+      <table>
         <tr id='result-table-head'>
-              <th>Reported crime</th>
-              <th>Occurence</th>
-              <th>Location</th>
+          <th>Reported crime</th>
+          <th>Occurence</th>
+          <th>Location</th>
         </tr>
         <tr id='result-table-body'></tr>
-        </table>
-      </section>
-    </div>
-  </body>
+      </table>
+    </section>
+    <div id="result-chart" style="width:100%; height:400px;"></div>
+  </div>
+</body>
+
 </html>
