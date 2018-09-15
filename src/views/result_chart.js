@@ -12,7 +12,11 @@ ResultChart.prototype.bindEvents = function(){
     })
 }
 
+
+
 ResultChart.prototype.renderChart = function(uniqueCrimeData){
+    const arrayOfCrimes = this.createArrayOfCrimes(uniqueCrimeData);
+    const arrayOfOccurences = this.createArrayOfOccurences(uniqueCrimeData);
     $(function () {
         $('#result-chart').highcharts({
             chart: {
@@ -22,7 +26,7 @@ ResultChart.prototype.renderChart = function(uniqueCrimeData){
                 text: 'Crimes in the area'
             },
             xAxis: {
-                categories: ['Apples', 'Bananas', 'Oranges']
+                categories: arrayOfCrimes
             },
             yAxis: {
                 title: {
@@ -30,15 +34,32 @@ ResultChart.prototype.renderChart = function(uniqueCrimeData){
                 }
             },
             series: [{
-                name: 'Jane',
-                data: [1, 0, 4]
-            }, {
-                name: 'John',
-                data: [5, 7, 3]
+                name: 'Last Month',
+                data: arrayOfOccurences
             }],
         });
     });
 }
+
+ResultChart.prototype.createArrayOfCrimes = function (uniqueCrimeData) {
+    arrayOfCrimes = [];
+    for (crime in uniqueCrimeData){
+        arrayOfCrimes.unshift(crime)
+    }
+    return arrayOfCrimes;
+}
+
+ResultChart.prototype.createArrayOfOccurences = function (uniqueCrimeData) {
+    arrayOfOccurences = [];
+    for (crime in uniqueCrimeData) {
+        arrayOfOccurences.unshift(uniqueCrimeData[crime])
+    }
+    return arrayOfOccurences;
+}
+
+
+
+
 // $(function () {
 //     $('#result-chart').highcharts({
 //         chart: {
