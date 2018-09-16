@@ -37,8 +37,7 @@ h1{
   /* background-color: #2196F3; */
   padding: 5rem 1rem 3rem 4rem;
 }
-.grid-item {
-    background-color: rgba(255, 255, 255, 0);
+.gr-item {
   padding: 2px;
   text-align: center;
   height: 2rem;
@@ -46,11 +45,13 @@ h1{
   font-size: 0.8rem;
 }
 
-.grid-item:hover{
+.gr-item:hover{
   background-color: rgba(220, 220, 220, 0.0);
 }
 
-.land{
+.engl,
+.wales,
+.irl{
   background-color: rgba(240, 240, 240, 0.8);
 }
 

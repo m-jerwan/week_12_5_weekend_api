@@ -16,7 +16,10 @@ CreateHtmlElem.prototype.createGenericElem = function (tag, container, content, 
     return tempElement;
 }
 
-
-
+CreateHtmlElem.prototype.createGridElement = function (tag, classType) {
+    const tempElement = document.createElement(tag);
+    tempElement.classList.add(classType);
+    return tempElement;
+}
 
 module.exports = CreateHtmlElem;
