@@ -1,6 +1,6 @@
 const Engine = require('./model/engine');
 const ChooseView = require('./views/choose_view');
-// const ResultMap = require('./views/result_map');
+const Map = require('./helpers/map');
 const ResultChart = require('./views/result_chart');
 const ResultNeigbDescript = require('./views/result-neigb-descrip');
 
@@ -22,5 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultNeigbDescript = new ResultNeigbDescript(descriptionElement);
     resultNeigbDescript.bindEvents();
 
-    neighbourhoodDescription
+    const map = new Map();
+    map.bindEvents();
+
 })

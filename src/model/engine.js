@@ -25,7 +25,8 @@ Engine.prototype.getAndPublishNeighbourhoods = function (forceId) {
         const requestForNeighPoly = new RequestHelper(`https://data.police.uk/api/${event.detail.forceId}/${event.detail.id}/boundary`);
         requestForNeighPoly.get()
             .then((data) => {
-                const reducePolygonData = this.reducePolygonNumber(100,data);                
+                const reducePolygonData = this.reducePolygonNumber(100,data);
+                PubSub.publish('Engine:reducedPolyData', reducePolygonData);      
                 const includePolygonsInrequest = this.includePolygonsInrequest(reducePolygonData);
                 const requestOfCrimesBasedOnPoly = new RequestHelper(`https://data.police.uk/api/crimes-street/all-crime?poly=${includePolygonsInrequest}`);
                 requestOfCrimesBasedOnPoly.get()

@@ -12,7 +12,6 @@ ChooseView.prototype.bindEvents = function () {
     PubSub.subscribe('Engine:array-of-neighbourhoods', (event) => {
         const forceId = event.detail.forceId;
         this.htmlElement.className = ('vissible');
-        console.log(this.htmlElement)
         this.resetOptions()
         event.detail.data.forEach(element => {
 
