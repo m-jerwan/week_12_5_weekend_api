@@ -1,6 +1,5 @@
 const Engine = require('./model/engine');
 const ChooseView = require('./views/choose_view');
-const ResultViewTable = require('./views/result_view_table');
 // const ResultMap = require('./views/result_map');
 const ResultChart = require('./views/result_chart');
 const ResultNeigbDescript = require('./views/result-neigb-descrip');
@@ -14,10 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const engine = new Engine();
     engine.bindEvents();
-    // engine.getAndPublishNeighbourhoods();
-
-
-
 
     const chartElement = document.querySelector('#result-chart');
     const resultChart = new ResultChart(chartElement);
