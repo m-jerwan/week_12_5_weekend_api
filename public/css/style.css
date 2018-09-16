@@ -1,18 +1,25 @@
+/* ====================================GLOBAL: */
 #all-wrapper {
     display: flex;
     font-family: 'Roboto', sans-serif;
     width: 95%;
 }
 
-#choose-view{
-    flex:1;
-    min-width: 45%;
-    height: 90vh;
+.hidden{
+      display: none;
 }
 
 h1{
     text-align: center;
     margin-top: 5rem;
+}
+
+/* ====================================CHOOSE: */
+
+#choose-view{
+    flex:1;
+    min-width: 45%;
+    height: 90vh;
 }
 
 #result-view {
@@ -23,15 +30,15 @@ h1{
     flex-wrap: wrap;
 }
 
+/* -------- GRID: */
 .grid-container {
   display: grid;
   grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem;
   /* background-color: #2196F3; */
-  padding: 5rem 1rem 1rem 4rem;
+  padding: 5rem 1rem 3rem 4rem;
 }
 .grid-item {
     background-color: rgba(255, 255, 255, 0);
-  /* border: 1px solid rgba(0, 0, 0, 0.8); */
   padding: 2px;
   text-align: center;
   height: 2rem;
@@ -47,22 +54,26 @@ h1{
   background-color: rgba(240, 240, 240, 0.8);
 }
 
-/* #select-dropdown {} */
 
-.hidden{
-      display: none;
+#select-dropdown{
+    margin-left:25%;
 }
 
-.t-body-crime{
-    text-align: right;
+/* ====================================RESULTS: */
+result-view{
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.t-body-occurence {
-    text-align: center;    
+#neighbourhoodDescription{
+    height: 10rem;
+    overflow: scroll;
 }
 
 
 #map1 { 
-    height: 20rem;
+    margin: 1rem;
+    height: 15rem;
     background-color: rgba(250, 250, 250, 0.8);
 }

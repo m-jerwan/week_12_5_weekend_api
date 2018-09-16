@@ -23,7 +23,7 @@ ResultChart.prototype.renderChart = function(uniqueCrimeData){
                 type: 'bar'
             },
             title: {
-                text: 'All neighbourghood reported crimes last month'
+                text: 'All reported neighbourghood crimes last month'
             },
             xAxis: {
                 categories: arrayOfCrimes
