@@ -35,10 +35,8 @@ ChooseView.prototype.buildGrid = function () {
     for (let counter = 1; counter < 89; counter++) {
         const gridItem = createHtmlElem.createGridElement('div', 'gr-item');
         this.fillGridItemWithText(gridItem, counter);
-
-
-
-        gridContainer.appendChild(gridItem)
+        this.giveClassToLandGridItmes(gridItem);
+        gridContainer.appendChild(gridItem);
     }
 }
 
@@ -48,7 +46,7 @@ ChooseView.prototype.fillGridItemWithText = function (gridItem, counter) {
             if (counter === 5) gridItem.textContent = 'NRHH';
             if (counter === 12) gridItem.textContent = 'DRHM';
             if (counter === 13) gridItem.textContent = 'CLVL';
-            if (counter === 17) gridItem.textContent = 'NRTI';
+            if (counter === 17) gridItem.textContent = 'NIRL';
             if (counter === 20) gridItem.textContent = 'LANC';
             if (counter === 21) gridItem.textContent = 'NRTY';
             if (counter === 28) gridItem.textContent = 'WESY';
@@ -98,6 +96,17 @@ ChooseView.prototype.resetOptions = function () {
     this.htmlElement.appendChild(emptyOption);
 }
 
+ChooseView.prototype.giveClassToLandGridItmes = function (gridItem) {
+    if (gridItem.textContent === 'NIRL') {
+        gridItem.classList.add('nirl');
+    } else if (gridItem.textContent === 'NRTW' ||
+        gridItem.textContent === 'DYFP' ||
+        gridItem.textContent === 'WESM' ||
+        gridItem.textContent === 'STHW' ||
+        gridItem.textContent === 'GWNT' ) {
+        gridItem.classList.add('wales');
+    }else if (gridItem.textContent) gridItem.classList.add('engl');
+}
 
 
 ChooseView.prototype.addEventLisenerToAll = function (allGrids) {

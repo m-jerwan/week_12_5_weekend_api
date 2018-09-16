@@ -43,18 +43,30 @@ h1{
   height: 2rem;
   margin: 0.05rem;
   font-size: 0.8rem;
+  color: white;
 }
 
 .gr-item:hover{
-  background-color: rgba(220, 220, 220, 0.0);
+  opacity: 0.2;
 }
 
-.engl,
+.nirl,
 .wales,
-.irl{
-  background-color: rgba(240, 240, 240, 0.8);
+.engl{
+    cursor: pointer;
 }
 
+.nirl{
+  background-color: #1C7317;
+}
+
+.wales{
+  background-color: #F2D230;
+}
+
+.engl{
+  background-color: #D92534;
+}
 
 #select-dropdown{
     margin-left:25%;
