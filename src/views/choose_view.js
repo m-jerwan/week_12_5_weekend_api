@@ -35,7 +35,7 @@ ChooseView.prototype.buildGrid = function () {
         const gridItem = createHtmlElem.createGridElement('div', 'gr-item');
         this.fillGridItemWithTextAndId(gridItem, counter);
         this.giveClassToLandGridItmes(gridItem);
-        this.addEventLisener(gridItem);
+        this.addEventListener(gridItem);
         gridContainer.appendChild(gridItem);
     }
 }
@@ -43,7 +43,7 @@ ChooseView.prototype.buildGrid = function () {
 ChooseView.prototype.resetOptions = function () {
     this.htmlElement.textContent = '';
     const emptyOption = document.createElement('option');
-    emptyOption.textContent = 'Please choose...';
+    emptyOption.textContent = 'Please choose a neighbourhood...';
     this.htmlElement.appendChild(emptyOption);
 }
 
@@ -56,7 +56,6 @@ ChooseView.prototype.fillGridItemWithTextAndId = function (gridItem, counter) {
     if (counter === 5) {
         gridItem.textContent = 'NRHH';
         gridItem.id = 'northumbria';
-        gridItem.id = '';
     }
     if (counter === 12) {
         gridItem.textContent = 'DRHM';
@@ -236,10 +235,19 @@ ChooseView.prototype.giveClassToLandGridItmes = function (gridItem) {
     } else if (gridItem.textContent) gridItem.classList.add('engl');
 }
 
-ChooseView.prototype.addEventLisener = function (gridItem) {
+ChooseView.prototype.addEventListener = function (gridItem) {
+    const forceIdShowElement = document.querySelector('.force-id-show');
+    gridItem.addEventListener('mouseover',(event)=>{
+        this.forceIdShow(gridItem.id, forceIdShowElement);
+    });
     gridItem.addEventListener('click', (event) => {
         PubSub.publish('ChooseView:Force-choosen', event.target.id)
     })
 }
+
+ChooseView.prototype.forceIdShow = function (forceIdToShow, element){
+    element.textContent = forceIdToShow;
+}
+
 
 module.exports = ChooseView;

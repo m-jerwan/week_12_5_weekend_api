@@ -35,7 +35,7 @@ h1{
   display: grid;
   grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem;
   /* background-color: #2196F3; */
-  padding: 5rem 1rem 3rem 4rem;
+  padding: 5rem 1rem 1rem 4rem;
 }
 .gr-item {
   padding: 2px;
@@ -70,6 +70,11 @@ h1{
 
 #select-dropdown{
     margin-left:25%;
+}
+
+
+.force-id-show{
+    text-align: center;
 }
 
 /* ====================================RESULTS: */
