@@ -4,6 +4,8 @@ with chart supporting data
 
 
 to run:
-npm i . 
-npm i webpack webpack-cli . 
-npm run build . 
+npm i 
+
+npm i webpack webpack-cli 
+
+npm run build 
